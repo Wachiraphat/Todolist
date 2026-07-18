@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome</title>
+    <style>
+        /* Global Styles */
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: rgba(0, 0, 0, 0.2); /* Transparent background */
+            background: linear-gradient(135deg, #80e0e6, #b3e4e7, #a1c9f1, #d0f1f4); /* Added light blue (#a1c9f1) */
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    
+        /* Centered container */
+        .container {
+            background-color: #fff;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+            width: 450px; /* เพิ่มความกว้าง */
+            text-align: center;
+        }
+    
+        h1 {
+            color: #0099CC;
+            margin: 0;
+            font-weight: 600;
+            font-size: 2.5em;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+    
+        p {
+            font-size: 1.1em;
+            color: #777;
+            margin-bottom: 30px;
+        }
+    
+        /* Button Styles */
+        .btn {
+            padding: 16px;
+            font-size: 18px;
+            font-weight: bold;
+            background-color: #0099CC;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            width: 50%;
+            transition: all 0.3s ease;
+            margin-bottom: 10px;
+        }
+    
+        /* Button hover effect */
+        .btn:hover {
+            background-color: #0077b3;
+        }
+    
+        /* Go Back button styles */
+        .go-back-btn {
+            padding: 16px;
+            background-color: #f1f1f1;
+            color: #0099CC;
+            border: none;
+            border-radius: 8px;
+            font-size: 18px;
+            cursor: pointer;
+            width: 50%;
+            transition: all 0.3s ease;
+        }
+    
+        /* Go Back button hover effect */
+        .go-back-btn:hover {
+            background-color: #e0e0e0;
+        }
+    
+        /* Responsive design */
+        @media (max-width: 480px) {
+            .container {
+                width: 300px; /* ปรับขนาดสำหรับหน้าจอเล็ก */
+            }
+    
+            .btn, .go-back-btn {
+                width: 100%; /* ปุ่มเต็มความกว้าง */
+                margin-bottom: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Welcome to To-Do</h1>
+        <p>Record your tasks and manage tasks yourself.</p>
+
+        <div class="button-container">
+            <a href="/login" class="btn">Login</a>
+            <a href="/register" class="go-back-btn">Register</a>
+        </div>
+    </div>
+
+</body>
+</html>

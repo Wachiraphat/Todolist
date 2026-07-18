@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <style>
+        /* Global Styles */
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: rgba(0, 0, 0, 0.2); /* Transparent background */
+            background: linear-gradient(135deg, #80e0e6, #b3e4e7, #a1c9f1, #d0f1f4);
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Centered container */
+        .register-container {
+            background-color: #fff;
+            padding: 10px;
+            border-radius: 10px;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+            width: 350px;
+            text-align: center;
+        }
+
+        h2 {
+            color: #0099CC;
+            margin-bottom: 25px;
+            font-weight: 600;
+        }
+
+        /* Input Styles */
+        input[type="text"], input[type="password"] {
+            width: 80%;
+            padding: 14px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+            font-size: 16px;
+            background-color: #fafafa;
+            transition: all 0.3s ease;
+        }
+
+        /* Focus effect on input fields */
+        input[type="text"]:focus, input[type="password"]:focus {
+            border-color: #0099CC;
+            background-color: #fff;
+            outline: none;
+        }
+
+        /* Button Styles */
+        button {
+            width: 48%;
+            padding: 14px;
+            background-color: #0099CC;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        /* Button hover effect */
+        button:hover {
+            background-color: #0077b3;
+        }
+
+        /* Go Back button styles */
+        .go-back-btn {
+            width: 48%;
+            padding: 14px;
+            background-color: #f1f1f1;
+            color: #0099CC;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        /* Go Back button hover effect */
+        .go-back-btn:hover {
+            background-color: #e0e0e0;
+        }
+
+        /* Flash message styles */
+        .flash {
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            font-size: 16px;
+            color: #333;
+            text-align: center;
+            border: 1px solid;
+        }
+        .flash.error {
+            background-color: #f8d7da;
+            border-color: #f5c6cb;
+        }
+        .flash.success {
+            background-color: #d4edda;
+            border-color: #c3e6cb;
+        }
+        .flash.warning {
+            background-color: #fff3cd;
+            border-color: #ffeeba;
+        }
+
+        /* Responsive design */
+        @media (max-width: 400px) {
+            .register-container {
+                width: 280px;
+            }
+
+            button, .go-back-btn {
+                width: 100%;
+                margin-bottom: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="register-container">
+        <h2>Create an Account</h2>
+
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    <div class="flash {{ category }}">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+
+        <!-- Register form -->
+        <form method="POST">
+            <input type="text" name="username" placeholder="Username" required>
+            <input type="password" name="password" placeholder="Password" required>
+            <input type="password" name="confirm_password" placeholder="Confirm Password" required>
+
+            <!-- Two buttons: Register and Go Back -->
+            <button type="submit">Register</button>
+        </form>
+
+        <!-- Links for login -->
+        <div class="link-container">
+            <p>Already have an account? <a href="{{ url_for('login') }}" style="color: #0099CC;">Login</a></p>
+        </div>
+    </div>
+
+    <script>
+        // Hide all flash messages smoothly after 2 seconds
+        setTimeout(function() {
+            const flashMessages = document.querySelectorAll('.flash');
+            flashMessages.forEach(function(message) {
+                message.style.transition = 'opacity 1s ease-out';  // 1s transition for smooth effect
+                message.style.opacity = '0'; // ลดความชัดเจนจนหายไป
+            });
+    
+            // Optionally remove flash message after the transition is complete (optional)
+            setTimeout(function() {
+                flashMessages.forEach(function(message) {
+                    message.style.display = 'none'; // ซ่อนข้อความจริงๆ หลังจากการหาย
+                });
+            }, 1000); // รอจนกว่าการเปลี่ยนแปลง opacity จะเสร็จสิ้น (1s)
+        }, 2000);  // 2000 milliseconds = 2 seconds
+    </script>
+    
+    
+
+</body>
+</html>

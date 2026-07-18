@@ -1,0 +1,294 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body Styles */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: rgba(0, 0, 0, 0.2); /* Transparent background */
+    background: linear-gradient(135deg, #80e0e6, #b3e4e7, #a1c9f1, #d0f1f4);
+    color: #333;
+    line-height: 1.6;
+}
+
+/* Container Styles */
+.container {
+    width: 80%;
+    max-width: 900px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #fff;  /* น้ำทะเลอ่อน ๆ และโปร่งแสง */
+    border-radius: 8px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Heading Styles */
+h1 {
+    text-align: center;
+    font-size: 2em;
+    margin-bottom: 30px;
+    color: #0099CC;
+}
+
+/* Form Styles */
+.task-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+/* Form Styles */
+.task-form input[type="text"],
+.task-form textarea,
+.task-form input[type="date"] {
+    padding: 12px;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    transition: border-color 0.3s;
+    width: 100%;  /* ลดความยาวของกล่อง Input */
+}
+
+
+.task-form input[type="text"]:focus,
+.task-form textarea:focus,
+.task-form input[type="date"]:focus {
+    border-color: #007BFF;
+    outline: none;
+}
+
+.task-form button {
+    padding: 12px;
+    background-color: #007BFF;
+    color: #fff;
+    font-size: 16px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.task-form button:hover {
+    background-color: #0056b3;
+}
+
+/* Date Picker Container */
+.date-picker-container {
+    display: flex;
+    gap: 10px;
+}
+
+/* To-Do List Styles */
+.todo-list {
+    list-style: none;
+    padding: 0;
+    margin-top: 30px;
+}
+
+.todo-list li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    margin-bottom: 10px;
+    background-color: #f9f9f9;
+    border-radius: 6px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s;
+}
+
+.todo-list li:hover {
+    background-color: #f1f1f1;
+}
+
+.todo-list li.done {
+    background-color: #e0f7e0;
+    text-decoration: line-through;
+    color: #888;
+}
+
+.todo-list li .task-details {
+    flex: 1;
+}
+
+.todo-list li .task-actions {
+    display: flex;
+    gap: 15px;
+}
+
+.todo-list li a {
+    color: #007BFF;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.todo-list li a:hover {
+    text-decoration: underline;
+}
+
+/* ปรับสีตัวอักษรของปุ่ม Mark และ Delete */
+.todo-list .btn-toggle,
+.todo-list .btn-delete,
+.btn-edit {
+    color: white; /* เปลี่ยนสีตัวอักษรของปุ่มให้เป็นสีขาว */
+    padding: 8px 12px;
+    font-size: 1em;
+    margin-left: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* การตั้งค่าของปุ่ม Mark */
+.todo-list .btn-toggle {
+    background-color: #0077b3;
+}
+
+.todo-list .btn-toggle:hover {
+    background-color: #005f85;
+}
+
+/* การตั้งค่าของปุ่ม Delete */
+.todo-list .btn-delete {
+    background-color: #f44336;
+}
+
+.todo-list .btn-delete:hover {
+    background-color: #d32f2f;
+}
+
+.todo-list .btn-edit {
+    background-color: #FF9900;
+    color: white;
+}
+
+.todo-list .btn-edit:hover {
+    background-color: #a06001;
+}
+
+.task-actions a {
+    display: block; /* ทำให้ปุ่มแต่ละปุ่มเป็น block level เพื่อให้แสดงในแต่ละแถว */
+    width: 100%; /* ปรับความกว้างของปุ่มให้เต็ม */
+    margin-bottom: 10px; /* เพิ่มช่องว่างระหว่างปุ่ม */
+}
+
+
+@media (max-width: 768px) {
+    .container {
+        width: 95%;
+    }
+
+    .task-form button {
+        font-size: 14px;
+    }
+
+    .todo-list li {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .todo-list li .task-actions {
+        margin-top: 10px;
+    }
+}
+
+/* Modal Styles */
+/* สไตล์ปกติ */
+.pending {
+    background-color: #f9f9f9;
+}
+
+.done {
+    background-color: #d3ffd3;
+    text-decoration: line-through;
+}
+
+/* สไตล์งานที่ใกล้ครบกำหนด */
+.near-due {
+    background-color: #fff3cd;
+    border-left: 5px solid #ffc107;
+}
+
+/* สไตล์งานที่เลยกำหนด */
+.overdue {
+    background-color: #f8d7da;
+    border-left: 5px solid #dc3545;
+}
+
+/* ปรับสไตล์ปุ่ม */
+.task-actions a {
+    margin-right: 10px;
+    text-decoration: none;
+    color: #007bff;
+}
+
+.task-actions a:hover {
+    text-decoration: underline;
+}
+
+/* ปุ่ม Logout */
+.logout-container {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+}
+
+.btn-logout {
+    padding: 10px 20px;
+    background-color: #cc0000;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 14px;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+.btn-logout:hover {
+    background-color: #a30000;
+}
+
+.button-container {
+    display: flex;
+    gap: 10px;  /* ให้มีช่องว่างระหว่างปุ่ม */
+    width: 100%;  /* ใช้ความกว้างเต็มพื้นที่ */
+}
+
+/* ปุ่ม Update Task */
+.btn-update {
+    width: 60%;  /* ขนาดของปุ่ม Update เป็น 60% */
+    padding: 12px 0;
+    background-color: #007BFF;
+    color: white;
+    font-size: 16px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.btn-update:hover {
+    background-color: #0056b3;
+}
+
+/* ปุ่ม Go Back */
+.btn-back {
+    width: 40%;  /* ขนาดของปุ่ม Go Back เป็น 40% */
+    padding: 12px 0;
+    background-color: #f1f1f1;
+    color: #007BFF;  /* เปลี่ยนสีตัวอักษรเป็น #007BFF */
+    font-size: 16px;
+    text-decoration: none;
+    border-radius: 6px;
+    display: flex;
+    align-items: center; /* จัดข้อความในแนวตั้ง */
+    justify-content: center; /* จัดข้อความในแนวนอน */
+    transition: background-color 0.3s;
+}
+
+.btn-back:hover {
+    background-color: #ddd;
+}

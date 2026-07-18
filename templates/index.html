@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do List</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <!-- Logout Button -->
+        <div class="logout-container">
+            <a href="{{ url_for('logout') }}" class="btn-logout">Logout</a>
+        </div>
+
+        <h1>To-Do List</h1>
+        
+        <!-- Form to add task -->
+        <form action="/add" method="POST" class="task-form">
+            <input type="text" name="title" placeholder="Enter task title" required>
+            <textarea name="description" placeholder="Enter task description" rows="4" required></textarea>
+            <div class="date-picker-container">
+                <input type="date" name="start_date" required>
+                <input type="date" name="end_date" required>
+            </div>
+            <button type="submit">Add Task</button>
+        </form>
+
+        <!-- To-Do List -->
+        <ul class="todo-list">
+            {% for todo in todos %}
+                <li class="{{ 'done' if todo.done else 'pending' }} 
+                            {% if todo in near_due_tasks %} near-due {% endif %}
+                            {% if todo in overdue_tasks %} overdue {% endif %}">
+                    <div class="task-details">
+                        <strong>{{ todo.title }}</strong><br>
+                        <em>{{ todo.description }}</em><br>
+                        <small>Start: {{ todo.start_date }} - End: {{ todo.end_date }}</small>
+                    </div>
+                    <div class="task-actions">
+                        <!-- ปุ่ม Mark -->
+                        <a href="{{ url_for('toggle_task', task_id=todo.id) }}" class="btn-toggle">
+                            {% if todo.done %} Unmark {% else %} Mark {% endif %}
+                        </a>
+                        <!-- ปุ่ม Delete -->
+                        <a href="{{ url_for('delete_task', task_id=todo.id) }}" class="btn-delete">Delete</a>
+                        <a href="{{ url_for('edit_task', task_id=todo.id) }}" class="btn-edit">Edit</a>
+                    
+                    
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+</body>
+</html>
