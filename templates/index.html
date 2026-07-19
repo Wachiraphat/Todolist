@@ -15,8 +15,8 @@
 
         <h1>To-Do List</h1>
         
-        <!-- Form to add task -->
-        <form action="/add" method="POST" class="task-form">
+        <!-- Form to add task (แก้ไขจาก /add เป็น url_for ให้ตรงกับ Python) -->
+        <form action="{{ url_for('add_task') }}" method="POST" class="task-form">
             <input type="text" name="title" placeholder="Enter task title" required>
             <textarea name="description" placeholder="Enter task description" rows="4" required></textarea>
             <div class="date-picker-container">
@@ -45,8 +45,7 @@
                         <!-- ปุ่ม Delete -->
                         <a href="{{ url_for('delete_task', task_id=todo.id) }}" class="btn-delete">Delete</a>
                         <a href="{{ url_for('edit_task', task_id=todo.id) }}" class="btn-edit">Edit</a>
-                    
-                    
+                    </div>
                 </li>
             {% endfor %}
         </ul>
